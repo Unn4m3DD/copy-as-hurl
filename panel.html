@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf8" />
+    <script src="./tw.js"></script>
+    <style>
+      #toast {
+        visibility: hidden;
+        min-width: 250px;
+        margin-left: -125px;
+        background-color: rgb(55 65 81);
+        color: #fff;
+        text-align: center;
+        border-radius: 2px;
+        padding: 12px;
+        position: fixed;
+        border-radius: 8px;
+        font-weight: 500;
+        font-size: 14px;
+        z-index: 1;
+        left: 50%;
+        bottom: 30px;
+      }
+
+      #toast.show {
+        visibility: visible;
+        animation: fadein 0.5s, fadeout 0.5s 1.5s forwards;
+      }
+
+      @keyframes fadein {
+        from {
+          bottom: 0;
+          opacity: 0;
+        }
+        to {
+          bottom: 30px;
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeout {
+        from {
+          bottom: 30px;
+          opacity: 1;
+        }
+        to {
+          bottom: 0;
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body class="">
+    <div class="p-2">
+      <div
+        class="p-2 border rounded-lg flex flex-col gap-y-2 pb-0 overflow-hidden max-h-[98vh]"
+      >
+        <div
+          class="flex flex-row w-full justify-between items-center flex-wrap gap-y-2"
+        >
+          <h2 class="text-xl font-bold w-fit">Requests</h2>
+          <div class="flex flex-row gap-x-4 gap-y-2 items-center flex-wrap">
+            <div class="flex flex-row items-center gap-x-1">
+              <input type="checkbox" id="include-headers" />
+              Include Headers
+            </div>
+            <div class="flex flex-row items-center gap-x-1">
+              <input type="checkbox" id="include-cookies" />
+              Include Cookies
+            </div>
+            <input
+              class="flex h-9 rounded-md border border-input bg-background px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+              placeholder="Search requests..."
+              id="search-input"
+              type="search"
+            />
+          </div>
+        </div>
+        <div
+          class="flex flex-col gap-y-2 overflow-y-auto w-[100%-16px] -mx-2"
+          id="request-container"
+        ></div>
+      </div>
+    </div>
+    <div id="toast">Request copied as hurl to clipboard</div>
+    <script src="panel.js"></script>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "name": "Copy as Hurl",
+  "description": "Lets you copy a request as a Hurl command",
+  "version": "1.0",
+  "manifest_version": 3,
+  "devtools_page": "devtools_page.html"
+}
